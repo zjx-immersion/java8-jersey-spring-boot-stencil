@@ -79,7 +79,7 @@ dependencies {
 
 allprojects {
     apply plugin: 'idea'
-//    apply plugingin: 'checkstyle'
+    apply plugin: 'checkstyle'
     apply plugin: 'findbugs'
     apply plugin: "io.spring.dependency-management"
 
@@ -115,10 +115,10 @@ allprojects {
         }
     }
 
-//    checkstyle {
-//        toolVersion = "6.7"
-//        configFile = new File(project(":").projectDir, "config/checkstyle/checkstyle.xml")
-//    }
+    checkstyle {
+        toolVersion = "6.7"
+        configFile = new File(project(":").projectDir, "config/checkstyle/checkstyle.xml")
+    }
 
     task unitTest(type : Test) {
         exclude 'com/thoughtworks/gaia/test/functional/**'

@@ -1,6 +1,7 @@
 package com.thoughtworks.gaia;
 
 import com.google.common.base.Joiner;
+import com.thoughtworks.gaia.common.filter.CORSFilter;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
@@ -15,7 +16,7 @@ import javax.annotation.PostConstruct;
 @Component
 public class JerseyConfig extends ResourceConfig {
     private static final String[] MODULE_PACKAGES = new String[]{
-        "com.thoughtworks.gaia.product.endpoint",
+            "com.thoughtworks.gaia.product.endpoint",
     };
 
     @Value("${spring.jersey.application-path:/}")
@@ -29,7 +30,8 @@ public class JerseyConfig extends ResourceConfig {
 
         this.registerClasses(
                 EntityFilteringFeature.class,
-                JacksonFeature.class
+                JacksonFeature.class,
+                CORSFilter.class
         );
     }
 
@@ -48,9 +50,9 @@ public class JerseyConfig extends ResourceConfig {
         config.setConfigId("springboot-jersey-stencil");
         config.setTitle("Spring Boot + Jersey + Swagger  Stencil");
         config.setVersion("v2");
-		config.setHost("localhost:8080");
+        config.setHost("localhost:8080");
         config.setContact("ZJX");
-        config.setSchemes(new String[] { "http", "https"});
+        config.setSchemes(new String[]{"http", "https"});
         config.setBasePath(apiPath);
         config.setResourcePackage(Joiner.on(",").join(MODULE_PACKAGES));
         config.setPrettyPrint(true);

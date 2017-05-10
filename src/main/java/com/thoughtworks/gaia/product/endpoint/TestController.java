@@ -16,19 +16,19 @@ import javax.ws.rs.core.MediaType;
 @Api(value = "test", description = "test api coded by ZJX")
 public class TestController {
 
-    @RequestMapping(value="hello", method= RequestMethod.GET)
+    @RequestMapping(value = "hello", method = RequestMethod.GET)
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_XML)
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
-    @ApiOperation(value="Hello Words", notes="input success")
+    @ApiOperation(value = "Hello Words", notes = "input success")
     public String show(String stuName) {
         return "success";
     }
 
-    @RequestMapping(value="{id}", method= RequestMethod.POST)
+    @RequestMapping(value = "{id}", method = RequestMethod.POST)
     @Produces(MediaType.APPLICATION_JSON)
-    @ApiOperation(value="查询ID", notes="输出success")
-    public String show1( String id) {
+    @ApiOperation(value = "查询ID", notes = "输出success")
+    public String show1(String id) {
         return "{result:\"success\"}";
     }
 }
