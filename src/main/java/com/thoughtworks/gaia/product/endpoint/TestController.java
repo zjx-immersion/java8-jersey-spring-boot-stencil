@@ -13,14 +13,14 @@ import javax.ws.rs.core.MediaType;
 
 @RestController
 @RequestMapping("test")
-@Api(value = "test", description = "test api coded by leo jiang")
+@Api(value = "test", description = "test api coded by ZJX")
 public class TestController {
 
     @RequestMapping(value="hello", method= RequestMethod.GET)
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.APPLICATION_XML)
     @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
-    @ApiOperation(value="打招呼", notes="输出success")
+    @ApiOperation(value="Hello Words", notes="input success")
     public String show(String stuName) {
         return "success";
     }
