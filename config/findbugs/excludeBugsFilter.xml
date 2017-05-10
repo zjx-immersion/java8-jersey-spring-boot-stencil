@@ -3,4 +3,11 @@
     <Match>
         <Bug code="EI,EI2" />
     </Match>
+    <!-- All bugs in test classes, except for JUnit-specific bugs -->
+    <Match>
+        <Class name="~.*\.*Test" />
+        <Not>
+            <Bug code="IJU" />
+        </Not>
+    </Match>
 </FindBugsFilter>

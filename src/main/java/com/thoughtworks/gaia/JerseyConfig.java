@@ -16,7 +16,7 @@ import javax.annotation.PostConstruct;
 @Component
 public class JerseyConfig extends ResourceConfig {
     private static final String[] MODULE_PACKAGES = new String[]{
-            "com.thoughtworks.gaia.product.endpoint",
+            "com.thoughtworks.gaia",
     };
 
     @Value("${spring.jersey.application-path:/}")
