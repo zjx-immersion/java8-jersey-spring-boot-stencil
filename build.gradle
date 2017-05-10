@@ -13,8 +13,15 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'findbugs'
+//apply plugin: "io.spring.dependency-management"
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'utf-8'
+}
 
 jar {
     baseName = 'spring-boot-gaia'
@@ -23,6 +30,38 @@ jar {
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+findbugs {
+    excludeFilter = new File(project(":").projectDir, "config/findbugs/excludeBugsFilter.xml")
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+checkstyle {
+    toolVersion = "6.7"
+    configFile = new File(project(":").projectDir, "config/checkstyle/checkstyle.xml")
+}
+
+task unitTest(type : Test) {
+    exclude 'com/thoughtworks/gaia/test/functional/**'
+}
+
+task functionalTest(type : Test) {
+    include 'com/thoughtworks/gaia/test/functional/**'
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven { url "http://repo.spring.io/release" }
+  maven { url "http://repo.spring.io/milestone" }
+  maven { url "http://repo.spring.io/snapshot" }
+}
 
 ext.libraries = [
         assertj_core: dependencies.create('org.assertj:assertj-core:3.0.0'),
@@ -75,63 +114,6 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
     testCompile libraries.assertj_core
-}
-
-allprojects {
-    apply plugin: 'idea'
-    apply plugin: 'checkstyle'
-    apply plugin: 'findbugs'
-    apply plugin: "io.spring.dependency-management"
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    tasks.withType(JavaCompile) {
-        options.encoding = 'utf-8'
-    }
-
-    repositories {
-      mavenLocal()
-    	mavenCentral()
-    	maven { url "http://repo.spring.io/release" }
-    	maven { url "http://repo.spring.io/milestone" }
-    	maven { url "http://repo.spring.io/snapshot" }
-    }
-
-  //  dependencyManagement {
-  //      imports {
-  //          mavenBom ':spring-cloud-dependencies:Dalston.RELEASE'
-  //      }
-  //  }
-
-    findbugs {
-        excludeFilter = new File(project(":").projectDir, "config/findbugs/excludeBugsFilter.xml")
-    }
-
-    tasks.withType(FindBugs) {
-        reports {
-            xml.enabled = false
-            html.enabled = true
-        }
-    }
-
-    checkstyle {
-        toolVersion = "6.7"
-        configFile = new File(project(":").projectDir, "config/checkstyle/checkstyle.xml")
-    }
-
-    task unitTest(type : Test) {
-        exclude 'com/thoughtworks/gaia/test/functional/**'
-    }
-
-    task functionalTest(type : Test) {
-        include 'com/thoughtworks/gaia/test/functional/**'
-    }
-}
-
-subprojects {
-    group =  'com.thoughtworks.gaia'
-    version = '0.0.1'
 }
 
 idea {

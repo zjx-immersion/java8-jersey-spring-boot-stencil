@@ -36,7 +36,6 @@ public class SwaggerConfig {
                 .title("Swagger 2")
                 .description("更多Spring Boot相关文章请关注：http://blog.didispace.com/")
                 .termsOfServiceUrl("http://www.baidu.com/")
-                .contact("程序猿Leo Jiang")
                 .version("1.0.1.0")
                 .build();
     }
