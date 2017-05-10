@@ -9,7 +9,7 @@ management:
 
 spring:
   jersey:
-    application-path: /
+    application-path: /api/gaia
   datasource:
     url: jdbc:mysql://localhost/gaia
     username: root

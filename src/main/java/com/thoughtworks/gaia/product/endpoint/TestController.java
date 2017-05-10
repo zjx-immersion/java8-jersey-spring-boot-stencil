@@ -1,11 +1,14 @@
-package com.example.demo.main;
+package com.thoughtworks.gaia.product.endpoint;
 
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RestController
@@ -22,7 +25,7 @@ public class TestController {
         return "success";
     }
 
-    @RequestMapping(value="{id}", method=RequestMethod.POST)
+    @RequestMapping(value="{id}", method= RequestMethod.POST)
     @Produces(MediaType.APPLICATION_JSON)
     @ApiOperation(value="查询ID", notes="输出success")
     public String show1( String id) {

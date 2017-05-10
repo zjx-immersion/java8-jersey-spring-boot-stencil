@@ -22,46 +22,44 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringBootConfiguration(Application.class)
-@Rollback
-@Transactional
-@ActiveProfiles({EnvProfile.TEST})
+//@Rollback
+//@Transactional
+//@ActiveProfiles({EnvProfile.TEST})
 
 @RunWith(SpringRunner.class)
-//@ContextConfiguration
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ContextConfiguration
+//@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 public class ProductServiceFunctionalTest {
     @Test
     public void contextLoads() {
     }
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private ProductDao productDao;
-
-    @Test
-    public void should_get_product_with_id() throws Exception {
-        ProductModel productModel = dummyProductModel();
-        productDao.save(productModel);
-        Long productId = productModel.getId();
-
-        Product product = productService.getProduct(productId);
-
-        assertThat(product.getId()).isEqualTo(productId);
-    }
-
-    private ProductModel dummyProductModel() {
-        ProductModel productModel = new ProductModel();
-        productModel.setName("name");
-        productModel.setTimeCreated(DateTime.now().toDate());
-        return productModel;
-    }
-
-    @Test(expected = NotFoundException.class)
-    public void should_throw_exception_when_not_found() {
-        productService.getProduct(-1L);
-    }
+//    @Autowired
+//    private ProductService productService;
+//
+//    @Autowired
+//    private ProductDao productDao;
+//
+//    @Test
+//    public void should_get_product_with_id() throws Exception {
+//        ProductModel productModel = dummyProductModel();
+//        productDao.save(productModel);
+//        Long productId = productModel.getId();
+//
+//        Product product = productService.getProduct(productId);
+//
+//        assertThat(product.getId()).isEqualTo(productId);
+//    }
+//
+//    private ProductModel dummyProductModel() {
+//        ProductModel productModel = new ProductModel();
+//        productModel.setName("name");
+//        productModel.setTimeCreated(DateTime.now().toDate());
+//        return productModel;
+//    }
+//
+//    @Test(expected = NotFoundException.class)
+//    public void should_throw_exception_when_not_found() {
+//        productService.getProduct(-1L);
+//    }
 }

@@ -10,23 +10,27 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import static springfox.documentation.builders.PathSelectors.regex;
+
 /**
  * Created by jxzhong on 2017/5/9.
  */
 
-@Configuration
-@EnableSwagger2
+//@Configuration
+//@EnableSwagger2
 public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .useDefaultResponseMessages(false)
+                .useDefaultResponseMessages(true)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo"))
-                .paths(PathSelectors.any())
+                .apis(RequestHandlerSelectors.any())
+//                .apis(RequestHandlerSelectors.basePackage("com.thoughtworks.gaia"))
+//                .paths(PathSelectors.any())
+                .paths(regex("/api/gaia/swagger.json"))
                 .build()
-                .pathMapping("/");
+                .pathMapping("/api/gaia/");
     }
 
     private ApiInfo apiInfo() {
