@@ -73,7 +73,7 @@ public class JerseyConfig extends ResourceConfig {
         this.register(SwaggerSerializers.class);
 
         BeanConfig config = new BeanConfig();
-//        config.setConfigId("springboot-jersey-swagger-docker-example");
+        config.setConfigId("springboot-jersey-swagger-docker-example");
         config.setTitle("Spring Boot + Jersey + Swagger  Example");
         config.setVersion("v1");
 //		config.setHost("localhost:8080");

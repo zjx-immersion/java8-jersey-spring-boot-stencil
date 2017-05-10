@@ -1,6 +1,11 @@
 server:
   port: 8080
-  context-path: /gaia/rest
+#  context-path: /gaia/rest
+  servlet-path: /api
+
+management:
+  security:
+    enabled: false
 
 spring:
   jersey:
@@ -15,9 +20,13 @@ spring:
     proxy-target-class: true
   jpa:
     generate-ddl: false
+    show-sql: true
     hibernate:
       ddl-auto: validate
       naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
+  h2:
+    console:
+      enabled: true
 
 flyway:
   enabled: true

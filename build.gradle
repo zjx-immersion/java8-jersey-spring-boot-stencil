@@ -31,7 +31,7 @@ ext.libraries = [
         yaz: dependencies.create('com.exmertec.yaz:yaz:0.15'),
         quartz: dependencies.create('org.quartz-scheduler:quartz:2.2.1'),
         orika_core: dependencies.create('ma.glasnost.orika:orika-core:1.4.6'),
-        flyway_core: dependencies.create('org.flywaydb:flyway-core:3.2'),
+        flyway_core: dependencies.create('org.flywaydb:flyway-core:4.2.0'),
         commons_codec: dependencies.create('commons-codec:commons-codec:1.9'),
         commons_beanutils: dependencies.create('commons-beanutils:commons-beanutils:1.9.2'),
         hashids: dependencies.create('org.hashids:hashids:1.0.1'),
