@@ -1,6 +1,6 @@
 server:
   port: 8080
-#  context-path: /gaia/rest
+# context-path: /gaia/rest
   servlet-path: /api
 
 management:

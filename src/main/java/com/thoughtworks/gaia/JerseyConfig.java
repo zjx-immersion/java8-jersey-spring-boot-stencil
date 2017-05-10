@@ -27,18 +27,18 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
 //         common packages
-        this.packages(
-            "com.thoughtworks.gaia.common.exception.handler"
-        );
+//        this.packages(
+//            "com.thoughtworks.gaia.common.exception.handler"
+//        );
 
         this.packages(
                 "com.thoughtworks.gaia"
         );
 
         // module packages
-        this.packages(
-            MODULE_PACKAGES
-        );
+//        this.packages(
+//            MODULE_PACKAGES
+//        );
 
         this.registerClasses(
 //                ApiListingResource.class,
@@ -87,5 +87,6 @@ public class JerseyConfig extends ResourceConfig {
         config.setResourcePackage(Joiner.on(",").join(MODULE_PACKAGES));
         config.setPrettyPrint(true);
         config.setScan(true);
+        config.setBasePath("/api/gaia");
     }
 }
