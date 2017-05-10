@@ -16,7 +16,7 @@ DROP DATABASE IF EXISTS `gaia`; CREATE SCHEMA `gaia` DEFAULT CHARACTER SET utf8 
 ### 测试服务器是否启动正常
 
 - 检查启动中有无异常log
-- 打开浏览器，访问<http://localhost:8080/gaia/rest/application.wadl>，看是否有API列表输出
+- 打开浏览器，访问<http://localhost:8080/api/swagger-ui.html>，看是否有API列表输出
 - 打开浏览器，访问<http://localhost:8080/gaia/rest/product/1>，看是否返回包含`"errorCode":"RESOURCE_NOT_FOUND"`这样的出错信息
 - 在数据库console中，使用后面的脚本在数据库中插入一条数据`insert into gaia.PRODUCT (`name`, `time_created`) values ('product_name', NOW());`
 - 在数据库console中，使用`select * from gaia.PRODUCT`，查看是否已插入数据成功，并记下数据的`id`
@@ -25,6 +25,6 @@ DROP DATABASE IF EXISTS `gaia`; CREATE SCHEMA `gaia` DEFAULT CHARACTER SET utf8 
 
 ### 查看所有API 地址及请求所需方式、参数
 
-- 中心服务器：<http://localhost:8080/gaia/rest/application.wadl>
+- 中心服务器：<http://localhost:8080/api/gaia/swagger.json>
 
 *注意：更改localhost到你希望查看的服务器IP*
