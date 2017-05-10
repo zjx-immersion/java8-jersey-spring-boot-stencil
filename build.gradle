@@ -89,8 +89,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-aop")
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
-    // https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured
-    compile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.9.0'
     compile("org.springframework.boot:spring-boot-starter-actuator")
 
     compile("mysql:mysql-connector-java")
@@ -114,6 +112,8 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
     testCompile libraries.assertj_core
+    //testCompile 'com.jayway.restassured:rest-assured:2.9.0'
+    testCompile group: 'com.jayway.restassured', name: 'rest-assured', version: '2.9.0'
 }
 
 idea {
